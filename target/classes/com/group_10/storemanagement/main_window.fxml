@@ -18,11 +18,12 @@
                                             <children>
                                                 <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="600.0">
                                                     <children>
-                                                        <TextField fx:id="sellCustomerID" promptText="Customer Id">
+                                                        <TextField fx:id="sellCustomerID" promptText="Customer ID">
                                                             <HBox.margin>
-                                                                <Insets />
+                                                                <Insets right="20.0" />
                                                             </HBox.margin>
                                                         </TextField>
+                                          <TextField fx:id="sellEmployeeID" promptText="Employee ID" />
                                           <ComboBox fx:id="sellStoreCombo" prefWidth="150.0" promptText="Store">
                                              <HBox.margin>
                                                 <Insets left="20.0" />
@@ -35,10 +36,10 @@
                                                 </HBox>
                                                 <TableView fx:id="sellTable" editable="true" prefHeight="200.0" prefWidth="200.0">
                                                     <columns>
-                                                        <TableColumn prefWidth="241.0" text="Product" />
-                                                        <TableColumn prefWidth="95.0" text="Quantity" />
-                                                        <TableColumn minWidth="0.0" prefWidth="118.0" text="Unit Price" />
-                                                        <TableColumn minWidth="0.0" prefWidth="132.0" text="Total" />
+                                                        <TableColumn fx:id="sellProdCol" prefWidth="241.0" text="Product" />
+                                                        <TableColumn fx:id="sellQuantityCol" prefWidth="95.0" text="Quantity" />
+                                                        <TableColumn fx:id="sellPriceCol" minWidth="0.0" prefWidth="118.0" text="Unit Price" />
+                                                        <TableColumn fx:id="sellTotalCol" minWidth="0.0" prefWidth="132.0" text="Total" />
                                                     </columns>
                                                 </TableView>
                                                 <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="600.0">
@@ -58,19 +59,19 @@
                                                         </Label>
                                                     </children>
                                                 </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="600.0">
+                                                <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="600.0">
                                                     <children>
                                                         <ComboBox fx:id="sellProductCombo" prefWidth="150.0" promptText="Product" />
                                                         <TextField fx:id="sellQuantityField" promptText="Quantity">
                                              <HBox.margin>
                                                 <Insets left="20.0" />
                                              </HBox.margin></TextField>
-                                                        <Button fx:id="sellAddButton" mnemonicParsing="false" text="Add">
+                                                        <Button fx:id="sellAddButton" mnemonicParsing="false" onAction="#sellAddProduct" text="Add">
                                                             <HBox.margin>
                                                                 <Insets left="10.0" />
                                                             </HBox.margin>
                                                         </Button>
-                                          <Button mnemonicParsing="false" text="Sell">
+                                          <Button fx:id="sellSellButtton" mnemonicParsing="false" onAction="#sell" text="Sell">
                                              <HBox.margin>
                                                 <Insets left="20.0" />
                                              </HBox.margin></Button>
@@ -91,8 +92,11 @@
                                     <children>
                                         <TableView fx:id="salesTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                                <TableColumn prefWidth="75.0" text="C1" />
-                                                <TableColumn prefWidth="75.0" text="C2" />
+                                                <TableColumn fx:id="salesID" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="salesDate" prefWidth="75.0" text="Date" />
+                                    <TableColumn fx:id="salesEmpID" prefWidth="118.0" text="EmployeeID" />
+                                    <TableColumn fx:id="salesStrID" prefWidth="105.0" text="StoreID" />
+                                    <TableColumn fx:id="salesCustID" minWidth="0.0" prefWidth="127.0" text="CustomerID" />
                                             </columns>
                                         </TableView>
                                     </children>
@@ -105,8 +109,16 @@
                                     <children>
                                         <TableView fx:id="customersTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                                <TableColumn prefWidth="75.0" text="C1" />
-                                                <TableColumn prefWidth="75.0" text="C2" />
+                                                <TableColumn fx:id="custID" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="custFName" prefWidth="119.0" text="First Name" />
+                                    <TableColumn fx:id="custLName" prefWidth="105.0" text="Last Name" />
+                                    <TableColumn fx:id="custEmail" prefWidth="88.0" text="Email" />
+                                    <TableColumn fx:id="custPhNo" prefWidth="94.0" text="Phone Number" />
+                                    <TableColumn fx:id="custAge" prefWidth="75.0" text="Age" />
+                                    <TableColumn fx:id="custSex" prefWidth="75.0" text="Sex" />
+                                    <TableColumn fx:id="custCity" prefWidth="75.0" text="City" />
+                                    <TableColumn fx:id="custStreet" prefWidth="114.0" text="Street" />
+                                    <TableColumn fx:id="custHouseNo" prefWidth="111.0" text="House No." />
                                             </columns>
                                         </TableView>
                                     </children>
@@ -119,8 +131,17 @@
                                     <children>
                                         <TableView fx:id="employeesTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                                <TableColumn prefWidth="75.0" text="C1" />
-                                                <TableColumn prefWidth="75.0" text="C2" />
+                                                <TableColumn fx:id="empID" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="empFName" prefWidth="119.0" text="First Name" />
+                                                <TableColumn fx:id="empLName" prefWidth="105.0" text="Last Name" />
+                                                <TableColumn fx:id="empEmail" prefWidth="88.0" text="Email" />
+                                                <TableColumn fx:id="empPhNo" prefWidth="72.0" text="Phone Number" />
+                                                <TableColumn fx:id="empAge" prefWidth="53.0" text="Age" />
+                                                <TableColumn fx:id="empSex" prefWidth="59.0" text="Sex" />
+                                                <TableColumn fx:id="empCity" prefWidth="97.0" text="City" />
+                                                <TableColumn fx:id="empStreet" prefWidth="77.0" text="Street" />
+                                                <TableColumn fx:id="empHouseNo" prefWidth="83.0" text="House No." />
+                                    <TableColumn fx:id="empBranchID" prefWidth="108.0" text="Working Place" />
                                             </columns>
                                         </TableView>
                                     </children>
@@ -133,8 +154,11 @@
                                     <children>
                                         <TableView fx:id="storesTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                                <TableColumn prefWidth="75.0" text="C1" />
-                                                <TableColumn prefWidth="75.0" text="C2" />
+                                                <TableColumn fx:id="strId" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="strName" prefWidth="75.0" text="Name" />
+                                    <TableColumn fx:id="strCity" prefWidth="75.0" text="City" />
+                                    <TableColumn fx:id="strStreet" prefWidth="75.0" text="Street" />
+                                    <TableColumn fx:id="strHouseNo" prefWidth="120.0" text="House No." />
                                             </columns>
                                         </TableView>
                                     </children>
@@ -147,8 +171,10 @@
                                     <children>
                                         <TableView fx:id="stocksTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                                <TableColumn prefWidth="75.0" text="C1" />
-                                                <TableColumn prefWidth="75.0" text="C2" />
+                                                <TableColumn fx:id="stkId" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="stkProdID" prefWidth="108.0" text="ProductID" />
+                                    <TableColumn fx:id="stkQuantity" prefWidth="109.0" text="Quantity" />
+                                    <TableColumn fx:id="stkStoreID" prefWidth="75.0" text="StoreID" />
                                             </columns>
                                         </TableView>
                                     </children>
@@ -161,8 +187,10 @@
                                     <children>
                                         <TableView fx:id="productsTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                                <TableColumn prefWidth="75.0" text="C1" />
-                                                <TableColumn prefWidth="75.0" text="C2" />
+                                                <TableColumn fx:id="prdID" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="prdName" prefWidth="75.0" text="Name" />
+                                    <TableColumn fx:id="prdPrice" prefWidth="112.0" text="Unit Price" />
+                                    <TableColumn fx:id="prdCat" prefWidth="99.0" text="Category" />
                                             </columns>
                                         </TableView>
                                     </children>

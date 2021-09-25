@@ -1,14 +1,217 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.group_10.storemanagement.MainWindow"
-            prefHeight="400.0" prefWidth="600.0" >
-
-</AnchorPane>
+<VBox prefHeight="540.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_10.storemanagement.MainController">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <TabPane layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
+                        <Tab text="Sell">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="600.0">
+                                                    <children>
+                                                        <TextField fx:id="sellCustomerID" promptText="Customer ID">
+                                                            <HBox.margin>
+                                                                <Insets right="20.0" />
+                                                            </HBox.margin>
+                                                        </TextField>
+                                          <TextField fx:id="sellEmployeeID" promptText="Employee ID" />
+                                          <ComboBox fx:id="sellStoreCombo" prefWidth="150.0" promptText="Store">
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                          </ComboBox>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <TableView fx:id="sellTable" editable="true" prefHeight="200.0" prefWidth="200.0">
+                                                    <columns>
+                                                        <TableColumn fx:id="sellProdCol" prefWidth="241.0" text="Product" />
+                                                        <TableColumn fx:id="sellQuantityCol" prefWidth="95.0" text="Quantity" />
+                                                        <TableColumn fx:id="sellPriceCol" minWidth="0.0" prefWidth="118.0" text="Unit Price" />
+                                                        <TableColumn fx:id="sellTotalCol" minWidth="0.0" prefWidth="132.0" text="Total" />
+                                                    </columns>
+                                                </TableView>
+                                                <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="600.0">
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <children>
+                                                        <Label text="Total:">
+                                                            <HBox.margin>
+                                                                <Insets right="20.0" />
+                                                            </HBox.margin>
+                                                        </Label>
+                                                        <Label fx:id="sellTotal" text="0">
+                                                            <HBox.margin>
+                                                                <Insets right="10.0" />
+                                                            </HBox.margin>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="600.0">
+                                                    <children>
+                                                        <ComboBox fx:id="sellProductCombo" prefWidth="150.0" promptText="Product" />
+                                                        <TextField fx:id="sellQuantityField" promptText="Quantity">
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin></TextField>
+                                                        <Button fx:id="sellAddButton" mnemonicParsing="false" onAction="#sellAddProduct" text="Add">
+                                                            <HBox.margin>
+                                                                <Insets left="10.0" />
+                                                            </HBox.margin>
+                                                        </Button>
+                                          <Button fx:id="sellSellButtton" mnemonicParsing="false" onAction="#sell" text="Sell">
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin></Button>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Sales">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <TableView fx:id="salesTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                                <TableColumn fx:id="salesID" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="salesDate" prefWidth="75.0" text="Date" />
+                                    <TableColumn fx:id="salesEmpID" prefWidth="118.0" text="EmployeeID" />
+                                    <TableColumn fx:id="salesStrID" prefWidth="105.0" text="StoreID" />
+                                    <TableColumn fx:id="salesCustID" minWidth="0.0" prefWidth="127.0" text="CustomerID" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Customers">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <TableView fx:id="customersTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                                <TableColumn fx:id="custID" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="custFName" prefWidth="119.0" text="First Name" />
+                                    <TableColumn fx:id="custLName" prefWidth="105.0" text="Last Name" />
+                                    <TableColumn fx:id="custEmail" prefWidth="88.0" text="Email" />
+                                    <TableColumn fx:id="custPhNo" prefWidth="94.0" text="Phone Number" />
+                                    <TableColumn fx:id="custAge" prefWidth="75.0" text="Age" />
+                                    <TableColumn fx:id="custSex" prefWidth="75.0" text="Sex" />
+                                    <TableColumn fx:id="custCity" prefWidth="75.0" text="City" />
+                                    <TableColumn fx:id="custStreet" prefWidth="114.0" text="Street" />
+                                    <TableColumn fx:id="custHouseNo" prefWidth="111.0" text="House No." />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Employees">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <TableView fx:id="employeesTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                                <TableColumn fx:id="empID" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="empFName" prefWidth="119.0" text="First Name" />
+                                                <TableColumn fx:id="empLName" prefWidth="105.0" text="Last Name" />
+                                                <TableColumn fx:id="empEmail" prefWidth="88.0" text="Email" />
+                                                <TableColumn fx:id="empPhNo" prefWidth="72.0" text="Phone Number" />
+                                                <TableColumn fx:id="empAge" prefWidth="53.0" text="Age" />
+                                                <TableColumn fx:id="empSex" prefWidth="59.0" text="Sex" />
+                                                <TableColumn fx:id="empCity" prefWidth="97.0" text="City" />
+                                                <TableColumn fx:id="empStreet" prefWidth="77.0" text="Street" />
+                                                <TableColumn fx:id="empHouseNo" prefWidth="83.0" text="House No." />
+                                    <TableColumn fx:id="empBranchID" prefWidth="108.0" text="Working Place" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Stores">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <TableView fx:id="storesTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                                <TableColumn fx:id="strId" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="strName" prefWidth="75.0" text="Name" />
+                                    <TableColumn fx:id="strCity" prefWidth="75.0" text="City" />
+                                    <TableColumn fx:id="strStreet" prefWidth="75.0" text="Street" />
+                                    <TableColumn fx:id="strHouseNo" prefWidth="120.0" text="House No." />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Stocks">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <TableView fx:id="stocksTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                                <TableColumn fx:id="stkId" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="stkProdID" prefWidth="108.0" text="ProductID" />
+                                    <TableColumn fx:id="stkQuantity" prefWidth="109.0" text="Quantity" />
+                                    <TableColumn fx:id="stkStoreID" prefWidth="75.0" text="StoreID" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Products">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <TableView fx:id="productsTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                                <TableColumn fx:id="prdID" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="prdName" prefWidth="75.0" text="Name" />
+                                    <TableColumn fx:id="prdPrice" prefWidth="112.0" text="Unit Price" />
+                                    <TableColumn fx:id="prdCat" prefWidth="99.0" text="Category" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </children>
+        </AnchorPane>
+        <HBox alignment="BOTTOM_RIGHT" prefHeight="28.0" prefWidth="600.0">
+            <children>
+                <Button fx:id="refreshButton" mnemonicParsing="false" text="Refresh">
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                </Button>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </HBox>
+    </children>
+</VBox>

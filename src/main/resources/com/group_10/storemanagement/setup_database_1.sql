@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS Employee(
     PRIMARY KEY(employee_id)
 );
 
+
 CREATE TABLE IF NOT EXISTS Sale(
     sale_id INT AUTO_INCREMENT,
     date_of_sale DATETIME NOT NULL,
@@ -74,22 +75,27 @@ CREATE TABLE IF NOT EXISTS Product(
 );
 
 CREATE TABLE IF NOT EXISTS Stock(
+    stock_id INT AUTO_INCREMENT,
+    stock_name VARCHAR(30),
+    stock_location VARCHAR(30),
     stock_store_id INT NOT NULL,
     stock_product_id INT NOT NULL,
     quantity INT NOT NULL,
     FOREIGN KEY (stock_store_id) REFERENCES Store(store_id),
     FOREIGN KEY (stock_product_id) REFERENCES Product(product_id),
-    PRIMARY KEY (stock_store_id, stock_product_id)
+    PRIMARY KEY (stock_id)
 );
 
 CREATE TABLE IF NOT EXISTS SaleItem(
+    item_id INT AUTO_INCREMENT,
+    type VARCHAR(30) NOT NULL,
     item_sale_id INT,
     item_product_id INT,
     quantity INT NOT NULL,
     CHECK(quantity > 0),
     FOREIGN KEY (item_sale_id) REFERENCES Sale(sale_id),
     FOREIGN KEY (item_product_id) REFERENCES Product(product_id),
-    PRIMARY KEY (item_sale_id, item_product_id)
+    PRIMARY KEY (item_id)
 );
 
 INSERT INTO Customer(
@@ -543,8 +549,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Thora",
@@ -555,8 +560,7 @@ VALUES(
         "Female",
         "Kendricktown",
         "Heidenreich Groves",
-        2958,
-        4
+        2958,1
     );
 
 INSERT INTO Employee(
@@ -568,8 +572,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Donavon",
@@ -580,8 +583,7 @@ VALUES(
         "Female",
         "New Sonia",
         "Ullrich Row",
-        3451,
-        1
+        3451,3
     );
 
 INSERT INTO Employee(
@@ -593,8 +595,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Nickolas",
@@ -605,8 +606,7 @@ VALUES(
         "Female",
         "West Arden",
         "Lexi Crossing",
-        2546,
-        4
+        2546,1
     );
 
 INSERT INTO Employee(
@@ -618,8 +618,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Gianni",
@@ -630,8 +629,7 @@ VALUES(
         "Female",
         "New Garlandport",
         "Blaze Junction",
-        1878,
-        4
+        1878,4
     );
 
 INSERT INTO Employee(
@@ -643,8 +641,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Deshaun",
@@ -655,8 +652,7 @@ VALUES(
         "Female",
         "Homenickport",
         "Jordan Stravenue",
-        1342,
-        1
+        1342,1
     );
 
 INSERT INTO Employee(
@@ -668,8 +664,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Bret",
@@ -680,8 +675,7 @@ VALUES(
         "Female",
         "Lake Kelleymouth",
         "Langworth Tunnel",
-        7318,
-        2
+        7318,2
     );
 
 INSERT INTO Employee(
@@ -693,8 +687,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Marilyne",
@@ -705,8 +698,7 @@ VALUES(
         "Female",
         "New Theo",
         "Reichert Union",
-        4939,
-        4
+        4939,1
     );
 
 INSERT INTO Employee(
@@ -718,8 +710,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Gabe",
@@ -730,8 +721,7 @@ VALUES(
         "Female",
         "Dickensville",
         "Cristina Falls",
-        2440,
-        4
+        2440,4
     );
 
 INSERT INTO Employee(
@@ -743,8 +733,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Bell",
@@ -755,8 +744,7 @@ VALUES(
         "Female",
         "Leathaview",
         "Jamil Prairie",
-        8484,
-        2
+        8484,2
     );
 
 INSERT INTO Employee(
@@ -768,8 +756,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Betsy",
@@ -780,8 +767,7 @@ VALUES(
         "Female",
         "Ryanport",
         "Kuvalis Trail",
-        8841,
-        1
+        8841,1
     );
 
 INSERT INTO Employee(
@@ -793,8 +779,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Juwan",
@@ -805,8 +790,7 @@ VALUES(
         "Female",
         "Cormiershire",
         "Schmidt Garden",
-        6068,
-        3
+        6068,3
     );
 
 INSERT INTO Employee(
@@ -818,8 +802,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Pinkie",
@@ -830,8 +813,7 @@ VALUES(
         "Female",
         "Mylenetown",
         "Cale Knoll",
-        8672,
-        4
+        8672,1
     );
 
 INSERT INTO Employee(
@@ -843,8 +825,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Lynn",
@@ -855,8 +836,7 @@ VALUES(
         "Female",
         "Lake Pansy",
         "Regan Forks",
-        3631,
-        1
+        3631,1
     );
 
 INSERT INTO Employee(
@@ -868,8 +848,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Alex",
@@ -880,8 +859,7 @@ VALUES(
         "Female",
         "Willchester",
         "Colten Trace",
-        9337,
-        2
+        9337,3
     );
 
 INSERT INTO Employee(
@@ -893,8 +871,7 @@ INSERT INTO Employee(
         sex,
         city,
         street,
-        house_number,
-        branch_id
+        house_number,branch_id
     )
 VALUES(
         "Kenyon",
@@ -905,8 +882,7 @@ VALUES(
         "Female",
         "Charleneland",
         "Kian Union",
-        2516,
-        3
+        2516,2
     );
 
 INSERT INTO Sale(date_of_sale, employee_id, customer_id, store_id)
@@ -921,65 +897,65 @@ VALUES("2021-6-5 02:33:46", 3, 1, 3);
 INSERT INTO Sale(date_of_sale, employee_id, customer_id, store_id)
 VALUES("2020-1-13 23:17:53", 8, 6, 1);
 
-INSERT INTO SaleItem(item_sale_id, item_product_id, quantity)
-VALUES(4, 2, 5);
+INSERT INTO SaleItem(item_sale_id, item_product_id, quantity,type)
+VALUES(4, 2, 5,"type-1");
 
-INSERT INTO SaleItem(item_sale_id, item_product_id, quantity)
-VALUES(3, 1, 7);
+INSERT INTO SaleItem(item_sale_id, item_product_id, quantity,type)
+VALUES(3, 1, 7,"type-1");
 
-INSERT INTO SaleItem(item_sale_id, item_product_id, quantity)
-VALUES(2, 10, 5);
+INSERT INTO SaleItem(item_sale_id, item_product_id, quantity,type)
+VALUES(2, 10, 5,"type-2");
 
-INSERT INTO SaleItem(item_sale_id, item_product_id, quantity)
-VALUES(1, 8, 9);
+INSERT INTO SaleItem(item_sale_id, item_product_id, quantity,type)
+VALUES(1, 8, 9,"type-1");
 
-INSERT INTO SaleItem(item_sale_id, item_product_id, quantity)
-VALUES(1, 6, 10);
+INSERT INTO SaleItem(item_sale_id, item_product_id, quantity,type)
+VALUES(1, 6, 10,"type-1");
 
-INSERT INTO SaleItem(item_sale_id, item_product_id, quantity)
-VALUES(4, 14, 8);
+INSERT INTO SaleItem(item_sale_id, item_product_id, quantity,type)
+VALUES(4, 14, 8,"type-3");
 
-INSERT INTO SaleItem(item_sale_id, item_product_id, quantity)
-VALUES(3, 12, 10);
+INSERT INTO SaleItem(item_sale_id, item_product_id, quantity,type)
+VALUES(3, 12, 10,"type-1");
 
-INSERT INTO SaleItem(item_sale_id, item_product_id, quantity)
-VALUES(2, 7, 7);
+INSERT INTO SaleItem(item_sale_id, item_product_id, quantity,type)
+VALUES(2, 7, 7,"type-1");
 
-INSERT INTO SaleItem(item_sale_id, item_product_id, quantity)
-VALUES(1, 12, 9);
+INSERT INTO SaleItem(item_sale_id, item_product_id, quantity,type)
+VALUES(1, 12, 9,"type-3");
 
-INSERT INTO SaleItem(item_sale_id, item_product_id, quantity)
-VALUES(1, 13, 8);
+INSERT INTO SaleItem(item_sale_id, item_product_id, quantity,type)
+VALUES(1, 13, 8,"type-4");
 
-INSERT INTO Stock(stock_store_id, stock_product_id, quantity)
-VALUES(1, 6, 10);
+INSERT INTO Stock(stock_store_id, stock_product_id, quantity,stock_name,stock_location)
+VALUES(1, 6, 10,"idk-0","5 Kilo Branch");
 
-INSERT INTO Stock(stock_store_id, stock_product_id, quantity)
-VALUES(1, 13, 10);
+INSERT INTO Stock(stock_store_id, stock_product_id, quantity,stock_name,stock_location)
+VALUES(1, 13, 10,"idk-1","6 Kilo Branch");
 
-INSERT INTO Stock(stock_store_id, stock_product_id, quantity)
-VALUES(1, 8, 10);
+INSERT INTO Stock(stock_store_id, stock_product_id, quantity,stock_name,stock_location)
+VALUES(1, 8, 10,"idk-2","6 Kilo Branch");
 
-INSERT INTO Stock(stock_store_id, stock_product_id, quantity)
-VALUES(1, 12, 90);
+INSERT INTO Stock(stock_store_id, stock_product_id, quantity,stock_name,stock_location)
+VALUES(1, 12, 90,"idk-3","4 Kilo Branch");
 
-INSERT INTO Stock(stock_store_id, stock_product_id, quantity)
-VALUES(3, 10, 30);
+INSERT INTO Stock(stock_store_id, stock_product_id, quantity,stock_name,stock_location)
+VALUES(3, 10, 30,"idk-4","7 Kilo Branch");
 
-INSERT INTO Stock(stock_store_id, stock_product_id, quantity)
-VALUES(3, 7, 50);
+INSERT INTO Stock(stock_store_id, stock_product_id, quantity,stock_name,stock_location)
+VALUES(3, 7, 50,"idk-5","7 Kilo Branch");
 
-INSERT INTO Stock(stock_store_id, stock_product_id, quantity)
-VALUES(4, 1, 40);
+INSERT INTO Stock(stock_store_id, stock_product_id, quantity,stock_name,stock_location)
+VALUES(4, 1, 40,"idk-6","7 Kilo Branch");
 
-INSERT INTO Stock(stock_store_id, stock_product_id, quantity)
-VALUES(4, 12, 77);
+INSERT INTO Stock(stock_store_id, stock_product_id, quantity,stock_name,stock_location)
+VALUES(4, 12, 77,"idk-7","7 Kilo Branch");
 
-INSERT INTO Stock(stock_store_id, stock_product_id, quantity)
-VALUES(1, 2, 45);
+INSERT INTO Stock(stock_store_id, stock_product_id, quantity,stock_name,stock_location)
+VALUES(1, 2, 45,"idk-8","7 Kilo Branch");
 
-INSERT INTO Stock(stock_store_id, stock_product_id, quantity)
-VALUES(1, 14, 33);
+INSERT INTO Stock(stock_store_id, stock_product_id, quantity,stock_name,stock_location)
+VALUES(1, 14, 33,"idk-9","6 Kilo Branch");
 
 INSERT INTO Payment(customer_id, sale_id, amount)
 VALUES(14, 1, 123.00);
