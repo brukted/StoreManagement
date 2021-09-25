@@ -75,7 +75,7 @@ public class MainController {
         sellProdCol.setCellFactory(new PropertyValueFactory<SaleItemView,String>("productName"));
         sellQuantityCol.setCellFactory(new PropertyValueFactory<SaleItemView,Integer>("quantity"));
         sellTotalCol.setCellFactory(new PropertyValueFactory<SaleItemView,Double>("total"));
-        sellPriceCol.setCellFactory(new PropertyValueFactory<SaleItemView,Integer>("price"));
+        sellPriceCol.setCellFactory(new PropertyValueFactory<SaleItemView,Double>("price"));
         sellTable.setItems(observableList);
     }
 

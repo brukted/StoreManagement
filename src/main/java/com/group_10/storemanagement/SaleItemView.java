@@ -2,11 +2,11 @@ package com.group_10.storemanagement;
 
 public class SaleItemView {
 
-    final int quantity;
+    final Integer quantity;
     final Product product;
     final String productName;
-    final double price;
-    final double total;
+    final Double price;
+    final Double total;
 
     public SaleItemView(int quantity, Product product) {
         this.quantity = quantity;
