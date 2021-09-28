@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="540.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_10.storemanagement.MainController">
+<VBox prefHeight="540.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_10.storemanagement.MainController">
     <children>
         <AnchorPane prefHeight="400.0" prefWidth="600.0">
             <children>
@@ -154,7 +154,7 @@
                                     <children>
                                         <TableView fx:id="storesTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                                <TableColumn fx:id="strId" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="strID" prefWidth="75.0" text="ID" />
                                                 <TableColumn fx:id="strName" prefWidth="75.0" text="Name" />
                                     <TableColumn fx:id="strCity" prefWidth="75.0" text="City" />
                                     <TableColumn fx:id="strStreet" prefWidth="75.0" text="Street" />
@@ -171,10 +171,9 @@
                                     <children>
                                         <TableView fx:id="stocksTable" layoutX="7.0" prefHeight="346.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                                <TableColumn fx:id="stkId" prefWidth="75.0" text="ID" />
-                                                <TableColumn fx:id="stkProdID" prefWidth="108.0" text="ProductID" />
-                                    <TableColumn fx:id="stkQuantity" prefWidth="109.0" text="Quantity" />
-                                    <TableColumn fx:id="stkStoreID" prefWidth="75.0" text="StoreID" />
+                                                <TableColumn fx:id="stockProduct" prefWidth="108.0" text="Product" />
+                                    <TableColumn fx:id="stockQuantity" prefWidth="109.0" text="Quantity" />
+                                    <TableColumn fx:id="stockStore" prefWidth="75.0" text="Store" />
                                             </columns>
                                         </TableView>
                                     </children>
@@ -190,7 +189,7 @@
                                                 <TableColumn fx:id="prdID" prefWidth="75.0" text="ID" />
                                                 <TableColumn fx:id="prdName" prefWidth="75.0" text="Name" />
                                     <TableColumn fx:id="prdPrice" prefWidth="112.0" text="Unit Price" />
-                                    <TableColumn fx:id="prdCat" prefWidth="99.0" text="Category" />
+                                    <TableColumn fx:id="prdCategory" prefWidth="99.0" text="Category" />
                                             </columns>
                                         </TableView>
                                     </children>
@@ -203,7 +202,7 @@
         </AnchorPane>
         <HBox alignment="BOTTOM_RIGHT" prefHeight="28.0" prefWidth="600.0">
             <children>
-                <Button fx:id="refreshButton" mnemonicParsing="false" text="Refresh">
+                <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#refreshDatabase" text="Refresh">
                     <HBox.margin>
                         <Insets />
                     </HBox.margin>

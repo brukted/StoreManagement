@@ -27,7 +27,7 @@ public class LoginWindow {
         var userName = usernameField.getText();
         var password = passwordField.getText();
         try {
-            var connection = establishConnection("bruk", "");
+            var connection = establishConnection(userName,password);
             loadMainView(connection);
         } catch (SQLException ex) {
             var dialog = new Alert(Alert.AlertType.ERROR);
@@ -59,7 +59,7 @@ public class LoginWindow {
     }
 
     private Connection establishConnection(String userName, String password) throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/test?"
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/store_management?"
                 + "user=" + userName + "&password=" + password);
         return conn;
     }
